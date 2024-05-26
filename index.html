@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+  
+  <div class="top_navbar">
+    <div class="hamburger">
+       <div class="one"></div>
+       <div class="two"></div>
+       <div class="three"></div>
+    </div>
+    <div class="top_menu">
+      <div class="logo">
+         <img class="logoimg" src="img/logotcc.png" alt="">
+      </div>
+      <ul>
+        <li><a href="#">
+          <i class="fas fa-search"></i>
+          </a></li>
+        <li><a href="#">
+          <i class="fas fa-bell"></i>
+          </a></li>
+        <li><a href="#">
+          <i class="fas fa-user"></i>
+          </a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="sidebar">
+      <ul>
+        <li><a href="#">
+            <span class="icon"><i class="fas fa-box-open"></i></span>
+            <span class="title">Produtos</span>
+          </a></li>
+        <li><a href="#">
+            <span class="icon"><i class="fas fa-question-circle"></i></span>
+          <span class="title">Sobre nós</span>
+          </a></li>
+        <li><a href="#">
+            <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+          <span class="title">carrinho</span>
+        </a></li>
+    </ul>
+  </div>
+  
+  <div class="container">
+    <div class="produto">
+        <a href="#">
+            <img class="imgproduto" src="img/1.png" alt="">
+            <h1 style="color: black; font-size: 20px;">Camisa Sabotage</h1>
+            <p style="color: black; font-size: 15px;">R$ 50</p>
+        </a>
+    </div>
+  </div>
+</div>
+
+<!-- Include your script here -->
+<script>
+$(document).ready(function(){
+    $(".hamburger").click(function(){
+        $(".wrapper").toggleClass("collapse");
+    });
+});
+</script>
+
+</body>
+</html>
