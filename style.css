@@ -166,20 +166,27 @@ body{
     margin-top: 10px;
 }
 .container {
-    background-color: #99b824;
-    margin-top: 100px;
-    width: 200px;
-    max-height: auto;
-    position: absolute;  
-    left: 50%; 
-    text-align: center;
-    border-radius: 20px;
+  margin-top: 100px;
+  width: auto;
+  max-height: auto;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .imgproduto {
     width: auto;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
+}
+.produto{
+  margin: 20px;
+  background-color: #99b824;
+  border-radius: 20px;
 }
 .input{
     border-radius: 20px;
