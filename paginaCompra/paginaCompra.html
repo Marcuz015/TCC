@@ -6,7 +6,6 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <link rel="stylesheet" href="style.css">
-    <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -21,7 +20,7 @@
     </div>
     <div class="top_menu">
       <div class="logo">
-         <img class="logoimg" src="img/logotcc.png" alt="">
+         <img class="logoimg" src="../img/logotcc.png" alt="">
       </div>
       <ul>
         <li><a href="#">
@@ -39,7 +38,7 @@
   
   <div class="sidebar">
       <ul>
-        <li><a href="#">
+        <li><a href="../index.html">
             <span class="icon"><i class="fas fa-box-open"></i></span>
             <span class="title">Produtos</span>
           </a></li>
@@ -49,24 +48,21 @@
           </a></li>
         <li><a href="#">
             <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-          <span class="title">carrinho</span>
+          <span class="title">Carrinho</span>
         </a></li>
     </ul>
   </div>
-  
+  <div class="titulo">
+    <img class="detalheimg" src="../img/detalhe.png" alt="">
+  </div>
   <div class="container">
-    <div class="produto">
-        <a href="paginaCompra/paginaCompra.html">
-            <img class="imgproduto" src="img/2.png" alt="">
-            <h1 style="color: black; font-size: 20px;">Camisa Sabotage</h1>
-            <p style="color: black; font-size: 15px;">R$ 50</p>
-            <button class="input" type="button"><p><strong>Comprar</strong></p></button>
-        </a>
-    </div>
+        <img class="img" src="../img/2.png" alt="">
+        <h1>Camisa Sabotagem</h1>
+        <p style="font-size: 20px; margin-top: 10px;">R$50</p>
+        <button class="input" type="button"><p>Adicionar ao Carrinho</p></button>
   </div>
 </div>
 
-<!-- Include your script here -->
 <script>
 $(document).ready(function(){
     $(".hamburger").click(function(){
