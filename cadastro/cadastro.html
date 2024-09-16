@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Drill</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../estilos/tailwind.css">
+    <link rel="stylesheet" href="../estilos/produtos.css">
+
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Parse JS SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.4.3/parse.min.js"></script>
+</head>
+<body>
+
+    <!-- Seu conteúdo HTML -->
+
+    <form id="produtoForm">
+        <!-- Inputs do formulário -->
+        <input type="text" id="nome" placeholder="Nome do produto" required>
+        <input type="number" id="preco" placeholder="Preço" required>
+        <input type="file" id="fotoFrente" required>
+        <input type="file" id="fotoCosta" required>
+        <button type="submit">Salvar Produto</button>
+    </form>
+
+    <!-- Scripts -->
+    <script src="cadastro.js"></script> <!-- Certifique-se que o caminho do script está correto -->
+</body>
+</html>
