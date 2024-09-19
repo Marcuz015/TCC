@@ -8,143 +8,138 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../estilos/tailwind.css">
     <link rel="stylesheet" href="../estilos/produtos.css">
-    <!-- CSS -->
 
     <!-- FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <!-- FONTES -->
 
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- ICONS -->
 
-    <!-- SRC -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Parse SDK -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.4.4/parse.min.js"></script>
 </head>
 <body>
-
-<!-- NAVBAR -->
-<div class="container">
-    <ul class="navbar">
-        <li class="links-navbar"><a href="../index.html"><i class="bi bi-house"></i></a></li>
-        <li class="links-navbar"><a href="#"><i class="bi bi-box-seam"></i></a></li>
-        <li class="links-navbar"><a href="#"><i class="bi bi-cart3"></i></a></li>
-        <li class="links-navbar"><a href="../pages/about.html"><i class="bi bi-pencil"></i></a></li>
-        <li class="links-navbar"><a href="../pages/perfil.html"><i class="bi bi-person"></i></a></li>
-    </ul>
-</div>
-<!-- NAVBAR -->
-
-<!-- HEADER --> 
-<header class="mt-72 w-ful h-[320px]">
-    <div class="w-full h-full flex flex-col justify-center items-center">
-        <img class="shadow-lg w-40 h-40 rounded-full hover:scale-110 duration-300" src="../assets/logo.jpeg" alt="Logo da empresa">
-        <h1 class="text-3xl font-bold mb-2 mt-4 text-white">Street Drill</h1>
+    <!-- NAVBAR -->
+    <div class="container">
+        <ul class="navbar">
+            <li class="links-navbar"><a href="../index.html"><i class="bi bi-house"></i></a></li>
+            <li class="links-navbar"><a href="#"><i class="bi bi-box-seam"></i></a></li>
+            <li class="links-navbar"><a href="#"><i class="bi bi-cart3"></i></a></li>
+            <li class="links-navbar"><a href="../pages/about.html"><i class="bi bi-pencil"></i></a></li>
+            <li class="links-navbar"><a href="../pages/perfil.html"><i class="bi bi-person"></i></a></li>
+        </ul>
     </div>
-</header>
-<!-- FIM HEADER --> 
+    <!-- NAVBAR -->
 
-<h2 class="text-4xl md:text-5xl font-bold mt-4 items-center justify-center text-center">Nossas roupas</h2>
+    <!-- HEADER --> 
+    <header class="mt-72 w-full h-[320px]">
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img class="shadow-lg w-40 h-40 rounded-full hover:scale-110 duration-300" src="../assets/logo.jpeg" alt="Logo da empresa">
+            <h1 class="text-3xl font-bold mb-2 mt-4 text-white">Street Drill</h1>
+        </div>
+    </header>
+    <!-- FIM HEADER --> 
 
-<!-- PRODUTOS -->
-<div id="menu">
-    <main class="grid grid-cols-1 md:grid-cols-2 gap-7 mx-auto max-w-7xl"> 
-        <!-- Os produtos serão renderizados aqui via JavaScript -->
-    </main>
-</div>
-<!-- FIM PRODUTOS -->
+    <h2 class="text-4xl md:text-5xl font-bold mt-4 items-center justify-center text-center">Nossas roupas</h2>
 
-<!-- CARRINHO MODAL -->
-<div id="cart-modal" class="bg-black/50 w-full h-full fixed top-0 left-0 z-[99] hidden items-center justify-center">
-    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-        <h2 class="text-center mb-2 font-bold text-2xl">MEU CARRINHO</h2>
-        <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
-        <p class="font-bold ml-2">TOTAL: <span id="cart-count">0.00</span></p>
-        <p class="font-bold ml-2 mt-4">Endereço de entrega: </p>
-        <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-1 rounded-xl my-1">
-        <p id="address-warn" class="text-red-600 ml-2 hidden">Digite seu endereço completo!</p>
-        <div class="flex justify-between mt-4 w-full">
-            <button id="close-modal-btn" class="bg-red-500 font text-white px-4 py-1 rounded">Fechar carrinho</button>
-            <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar compra</button>
+    <!-- PRODUTOS -->
+    <div id="menu">
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-7 mx-auto max-w-7xl">
+            <!-- Os produtos serão renderizados aqui via JavaScript -->
+        </main>
+    </div>
+    <!-- FIM PRODUTOS -->
+
+    <!-- CARRINHO MODAL -->
+    <div id="cart-modal" class="bg-black/50 w-full h-full fixed top-0 left-0 z-[99] hidden items-center justify-center">
+        <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+            <h2 class="text-center mb-2 font-bold text-2xl">MEU CARRINHO</h2>
+            <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+            <p class="font-bold ml-2">TOTAL: <span id="cart-count">0.00</span></p>
+            <p class="font-bold ml-2 mt-4">Endereço de entrega: </p>
+            <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-1 rounded-xl my-1">
+            <p id="address-warn" class="text-red-600 ml-2 hidden">Digite seu endereço completo!</p>
+            <div class="flex justify-between mt-4 w-full">
+                <button id="close-modal-btn" class="bg-red-500 font text-white px-4 py-1 rounded">Fechar carrinho</button>
+                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar compra</button>
+            </div>
         </div>
     </div>
-</div>
-<!-- FIM CARRINHO MODAL -->
+    <!-- FIM CARRINHO MODAL -->
 
-<!-- FOOTER CARRINHO -->
-<footer class="w-full bg-green-700 py-2 fixed bottom-0 z-40 items-center justify-center text-center">
-    <button id="cart-btn" class="font-bold justify-center text-white items-center text-center gap-2">
-        (<span id="cart-count">  </span>) veja meu carrinho
-        <i class="bi bi-cart-plus text-lg text-white"></i>
-    </button>
-</footer>
-<!-- FOOTER FIM CARRINHO -->
+    <!-- FOOTER CARRINHO -->
+    <footer class="w-full bg-green-700 py-2 fixed bottom-0 z-40 items-center justify-center text-center">
+        <button id="cart-btn" class="font-bold justify-center text-white items-center text-center gap-2">
+            (<span id="cart-count">  </span>) veja meu carrinho
+            <i class="bi bi-cart-plus text-lg text-white"></i>
+        </button>
+    </footer>
+    <!-- FOOTER FIM CARRINHO -->
 
-<!-- Script para buscar e renderizar produtos -->
-<script>
-  // Inicialize o Parse SDK com suas credenciais
-  Parse.initialize("B2qJU3Fe5loB24EybwJ9oukcf3rtMWfJDF4ZK59B", "TpRENXPWBPfvzBP1V6gntZf6OdDEdpFKWUiOnziP"); // Substitua pelos seus IDs corretos
-  Parse.serverURL = 'https://parseapi.back4app.com/';
+    <!-- Script para buscar e renderizar produtos -->
+    <script>
+        // Inicialize o Parse SDK com suas credenciais
+        Parse.initialize("B2qJU3Fe5loB24EybwJ9oukcf3rtMWfJDF4ZK59B", "TpRENXPWBPfvzBP1V6gntZf6OdDEdpFKWUiOnziP");
+        Parse.serverURL = 'https://parseapi.back4app.com/';
 
-  // Função para buscar produtos do banco de dados e renderizá-los
-  async function fetchAndRenderProducts() {
-      const Produtos = Parse.Object.extend("Produtos"); // Verifique se a classe "Produtos" existe no Back4App
-      const query = new Parse.Query(Produtos);
+      
+        // Função para buscar produtos do banco de dados e renderizá-los
+        async function fetchAndRenderProducts() {
+    const Produtos = Parse.Object.extend("Produto");
+    const query = new Parse.Query(Produtos);
 
-      try {
-          const results = await query.find(); // Busca todos os produtos
-          const productContainer = document.querySelector('#menu main');
-          productContainer.innerHTML = ''; // Limpa o conteúdo anterior
+    try {
+        const results = await query.find();
+        const productContainer = document.querySelector('#menu main');
+        productContainer.innerHTML = ''; // Limpa o conteúdo anterior
 
-          if (results.length === 0) {
-              productContainer.innerHTML = '<p>Nenhum produto encontrado.</p>';
-          }
+        if (results.length === 0) {
+            productContainer.innerHTML = '<p>Nenhum produto encontrado.</p>';
+        }
 
-          // Renderiza cada produto
-          results.forEach((produto) => {
-              const nome = produto.get("nome"); // Atributo nome do produto
-              const preco = produto.get("preco"); // Atributo preço do produto
-              const imageUrl = produto.get("imagemUrl"); // Atributo imagemUrl
+        results.forEach((produto) => {
+            const nome = produto.get("nome");
+            const preco = produto.get("preco");
+            const fotoFrenteFile = produto.get("fotoFrente");
+            const fotoCostaFile = produto.get("fotoCosta");
 
-              if (!nome || !preco || !imageUrl) {
-                  console.error('Produto incompleto:', produto);
-                  return;
-              }
+            if (!nome || !preco || !fotoFrenteFile) {
+                console.error('Produto incompleto:', produto);
+                return;
+            }
 
-              const productHtml = `
-                  <div class="flex gap-2">
-                      <img class="w-52 h-52 md:w-80 md:h-80 rounded-2xl bg-cover hover:scale-110 duration-300 mt-9 md:ml-9 ml-4" src="${imageUrl}" alt="${nome}">
-                      <div class="ml-3">
-                          <p class="font-bold md:text-3xl text-xl mt-9">${nome}</p>
-                          <p class="text-lg mt-3">Coleção Exclusiva</p>
-                          <div class="flex items-center gap-2 justify-between">
-                              <p class="font-bold text-lg mt-3">R$ ${preco}</p>
-                              <button class="bg-gray-950 text-white px-5 rounded-lg add-to-btn mt-3"
-                              data-name="${nome}"
-                              data-price="${preco}">
-                                  <i class="bi bi-cart-plus text-lg"></i>
-                              </button>
-                          </div>
-                      </div>
-                  </div>
-              `;
+            const fotoFrenteUrl = fotoFrenteFile instanceof Parse.File ? fotoFrenteFile.url() : fotoFrenteFile;
+            const fotoCostaUrl = fotoCostaFile && fotoCostaFile instanceof Parse.File ? fotoCostaFile.url() : fotoCostaFile;
 
-              // Adiciona o produto ao container
-              productContainer.innerHTML += productHtml;
-          });
-      } catch (error) {
-          console.error('Erro ao buscar produtos:', error);
-      }
-  }
+            const productHtml = `
+                <div class="flex gap-2">
+                    <img class="w-52 h-52 md:w-80 md:h-80 rounded-2xl bg-cover hover:scale-110 duration-300 mt-9 md:ml-9 ml-4" src="${fotoFrenteUrl}" alt="${nome}">
+                    <div class="ml-3">
+                        <p class="font-bold md:text-3xl text-xl mt-9">${nome}</p>
+                        <p class="text-lg mt-3">Coleção Exclusiva</p>
+                        <div class="flex items-center gap-2 justify-between">
+                            <p class="font-bold text-lg mt-3">R$ ${preco}</p>
+                            <button class="bg-gray-950 text-white px-5 rounded-lg add-to-btn mt-3"
+                            data-name="${nome}"
+                            data-price="${preco}">
+                                <i class="bi bi-cart-plus text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-  // Chame a função quando a página carregar
-  document.addEventListener('DOMContentLoaded', fetchAndRenderProducts);
-</script>
-
+            productContainer.innerHTML += productHtml;
+        });
+    } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+    }
+}
+      
+        // Chame a função quando a página carregar
+        document.addEventListener('DOMContentLoaded', fetchAndRenderProducts);
+    </script>
 </body>
 </html>

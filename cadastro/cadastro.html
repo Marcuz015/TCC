@@ -1,39 +1,240 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street Drill</title>
+    <title>Cadastro de Camisetas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.2.0/parse.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../estilos/tailwind.css">
-    <link rel="stylesheet" href="../estilos/produtos.css">
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
 
-    <!-- FONTES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
 
-    <!-- Parse JS SDK -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.4.3/parse.min.js"></script>
+        input[type="text"],
+        input[type="number"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .product-img {
+            width: 100px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .ml-2 {
+            margin-left: 8px;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Seu conteúdo HTML -->
-
-    <form id="produtoForm">
-        <!-- Inputs do formulário -->
-        <input type="text" id="nome" placeholder="Nome do produto" required>
-        <input type="number" id="preco" placeholder="Preço" required>
-        <input type="file" id="fotoFrente" required>
-        <input type="file" id="fotoCosta" required>
-        <button type="submit">Salvar Produto</button>
+    <h1>Cadastro de Camisetas</h1>
+    <form id="camisetaForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" name="preco" step="0.01" required>
+        
+        <label for="fotoFrente">Foto da Frente:</label>
+        <input type="file" id="fotoFrente" name="fotoFrente" accept="image/*" required>
+        
+        <label for="fotoCosta">Foto do Costas:</label>
+        <input type="file" id="fotoCosta" name="fotoCosta" accept="image/*" required>
+        
+        <button type="submit">Cadastrar Camiseta</button>
     </form>
 
-    <!-- Scripts -->
-    <script src="cadastro.js"></script> <!-- Certifique-se que o caminho do script está correto -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Foto da Frente</th>
+                <th>Foto do Costas</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="camisetaTableBody">
+            <!-- Dados serão inseridos aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            // Configuração inicial do Parse
+            Parse.initialize("B2qJU3Fe5loB24EybwJ9oukcf3rtMWfJDF4ZK59B", "TpRENXPWBPfvzBP1V6gntZf6OdDEdpFKWUiOnziP");
+            Parse.serverURL = 'https://parseapi.back4app.com/';
+
+            // Adicionar evento de envio do formulário
+            $('#camisetaForm').submit(async function (e) {
+                e.preventDefault();
+                
+                const nome = $('#nome').val();
+                const preco = parseFloat($('#preco').val());
+                const fotoFrenteInput = $('#fotoFrente')[0];
+                const fotoCostaInput = $('#fotoCosta')[0];
+                
+                const fotoFrenteFile = fotoFrenteInput.files[0];
+                const fotoCostaFile = fotoCostaInput.files[0];
+                
+                if (fotoFrenteFile && fotoCostaFile) {
+                    const fotoFrenteParseFile = new Parse.File('fotoFrente.png', fotoFrenteFile);
+                    const fotoCostaParseFile = new Parse.File('fotoCosta.png', fotoCostaFile);
+
+                    const camiseta = new Parse.Object('Camisetas');
+                    camiseta.set('nome', nome);
+                    camiseta.set('preco', preco);
+                    camiseta.set('fotoFrente', fotoFrenteParseFile);
+                    camiseta.set('fotoCosta', fotoCostaParseFile);
+
+                    try {
+                        const result = await camiseta.save();
+                        if (result) {
+                            atualizarDados();
+                        }
+                    } catch (error) {
+                        console.error('Error ao cadastrar a camiseta:', error);
+                    }
+                }
+            });
+
+            // Função para atualizar os dados na tabela
+            async function atualizarDados() {
+                $('#camisetaTableBody').empty();
+
+                const Camisetas = Parse.Object.extend('Camisetas');
+                const query = new Parse.Query(Camisetas);
+
+                try {
+                    const listaDeCamisetas = await query.find();
+                    listaDeCamisetas.forEach(camiseta => {
+                        addCamisetaToTable(
+                            camiseta.get('nome'),
+                            camiseta.get('preco'),
+                            camiseta.get('fotoFrente').url(),
+                            camiseta.get('fotoCosta').url()
+                        );
+                    });
+                } catch (error) {
+                    console.error('Error ao buscar camisetas:', error);
+                }
+            }
+
+            // Função para adicionar uma camiseta à tabela
+            function addCamisetaToTable(nome, preco, fotoFrente, fotoCosta) {
+                const newRow = `<tr>
+                    <td>${nome}</td>
+                    <td>${preco.toFixed(2)}</td>
+                    <td><img src="${fotoFrente}" class="product-img"></td>
+                    <td><img src="${fotoCosta}" class="product-img"></td>
+                    <td>
+                        <button class="btn btn-primary editBtn">Editar</button>
+                        <button class="btn btn-danger deleteBtn ml-2">Excluir</button>
+                    </td>
+                </tr>`;
+                $('#camisetaTableBody').append(newRow);
+            }
+
+            // Chamar a função para carregar os dados inicialmente
+            atualizarDados();
+        });
+    </script>
 </body>
 </html>
